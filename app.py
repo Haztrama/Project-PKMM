@@ -4,7 +4,7 @@ Jalankan dengan:  streamlit run app.py
 """
 import streamlit as st
 
-from utils import (APP_VERSION, OLLAMA_MODEL, PAGE_DASH, PAGE_HISTORY, PAGE_LOGIN, badge, is_authenticated,
+from utils import (APP_VERSION, OLLAMA_MODEL, PAGE_DASH, PAGE_HISTORY, badge, is_authenticated,
                    ollama_status, render, setup_page, system_info, topbar)
 
 setup_page("Beranda", sidebar=False)
