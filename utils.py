@@ -374,10 +374,11 @@ def logout() -> None:
 
 
 def require_login() -> None:
-    """Alihkan ke halaman Login jika belum masuk."""
-    if not is_authenticated():
-        st.session_state["login_notice"] = "Silakan masuk terlebih dahulu untuk membuka halaman tersebut."
-        st.switch_page(PAGE_LOGIN)
+    pass 
+   # """Alihkan ke halaman Login jika belum masuk."""
+   # if not is_authenticated():
+   #     st.session_state["login_notice"] = "Silakan masuk terlebih dahulu untuk membuka halaman tersebut."
+   #     st.switch_page(PAGE_LOGIN)
 
 
 def topbar() -> None:
