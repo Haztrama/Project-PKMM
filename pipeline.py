@@ -17,11 +17,28 @@ from knowledge import QUESTION_DB, TOPIC_KEYWORDS
 from utils import ASR_MODELS, OLLAMA_MODEL, OLLAMA_TIMEOUT, OLLAMA_URL, TARGET_SR
 
 # --- KONFIGURASI SISTEM ---
-try:
-    ffmpeg_path = imageio_ffmpeg.get_ffmpeg_exe()
-except Exception:
-    # Fallback jika terjadi kendala, arahkan ke string default sistem
-    ffmpeg_path = "ffmpeg"
+def extract_audio_from_video(input_video_path, output_audio_path):
+    try:
+        # Ambil path FFmpeg secara otomatis yang kompatibel dengan Linux / Windows
+        ffmpeg_path = imageio_ffmpeg.get_ffmpeg_exe()
+        
+        # Jalankan perintah ekstraksi audio menggunakan subprocess
+        command = [
+            ffmpeg_path,
+            "-i", input_video_path,
+            "-vn",
+            "-acodec", "pcm_s16le",
+            "-ar", "16000",
+            "-ac", "1",
+            output_audio_path,
+            "-y" # Timpa file jika sudah ada
+        ]
+        
+        subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return True
+    except Exception as e:
+        print(f"Error FFmpeg: {e}")
+        return False
 
 
 @st.cache_resource(show_spinner=False)
