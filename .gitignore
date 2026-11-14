@@ -1,0 +1,20 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+env/
+venv/
+ENV/
+
+# Database lokal
+*.db
+*.sqlite3
+
+# File biner / executable besar
+ffmpeg.exe
+
+# Folder temp / unggahan sementara
+temp/
+*.json
