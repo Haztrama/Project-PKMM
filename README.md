@@ -91,6 +91,7 @@ streamlit run app.py
 Akses aplikasi melalui peramban di alamat: http://localhost:8501
 
 ## 📁 Struktur Direktori Proyek
+```
 Project-PKMM/
 ├── app.py                      # Landing Page utama (Bento-Grid)
 ├── requirements.txt            # Daftar pustaka Python
@@ -102,6 +103,7 @@ Project-PKMM/
     ├── 1_🔐_Login.py          # Halaman autentikasi / login HR
     ├── 2_📊_Dashboard_Penilaian.py # Workspace split-screen penilaian video & AI
     └── 3_📋_Riwayat_Kandidat.py   # Tabel log rekapitulasi riwayat penilaian
+```
 
 ## ⚙️ Logika Penilaian & Cara Kerja Sistem
 * **Ekstraksi & Transkripsi Audio**: Video wawancara diunggah melalui antarmuka Streamlit, kemudian dikonversi menjadi audio WAV 16 kHz mono menggunakan FFmpeg sebelum ditranskripsi oleh modul Wav2Vec2.
