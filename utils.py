@@ -381,6 +381,7 @@ def require_login() -> None:
 
 
 def topbar() -> None:
+    pass
    # """Bilah navigasi atas (menggantikan navigasi sidebar bawaan Streamlit)."""
    # c = st.columns([2.4, 1.0, 1.1, 1.1, 2.1, 1.1], vertical_alignment="center")
    # with c[0]:
