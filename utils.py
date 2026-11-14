@@ -381,24 +381,24 @@ def require_login() -> None:
 
 
 def topbar() -> None:
-    """Bilah navigasi atas (menggantikan navigasi sidebar bawaan Streamlit)."""
-    c = st.columns([2.4, 1.0, 1.1, 1.1, 2.1, 1.1], vertical_alignment="center")
-    with c[0]:
-        render('<div class="il-brand"><div class="il-brand-mark">⚡</div>InterviewLens</div>')
-    with c[1]:
-        st.page_link(PAGE_HOME, label="Beranda")
-    with c[2]:
-        st.page_link(PAGE_DASH, label="Penilaian")
-    with c[3]:
-        st.page_link(PAGE_HISTORY, label="Riwayat")
-    with c[4]:
-        render(f'<div style="text-align:right">{status_chip()}</div>')
-    with c[5]:
-        if is_authenticated():
-            if st.button("Keluar", key="topbar_logout"):
-                logout()
-        else:
-            st.page_link(PAGE_LOGIN, label="Masuk")
+   # """Bilah navigasi atas (menggantikan navigasi sidebar bawaan Streamlit)."""
+   # c = st.columns([2.4, 1.0, 1.1, 1.1, 2.1, 1.1], vertical_alignment="center")
+   # with c[0]:
+    #    render('<div class="il-brand"><div class="il-brand-mark">⚡</div>InterviewLens</div>')
+   # with c[1]:
+   #     st.page_link(PAGE_HOME, label="Beranda")
+   # with c[2]:
+  #      st.page_link(PAGE_DASH, label="Penilaian")
+   # with c[3]:
+   #     st.page_link(PAGE_HISTORY, label="Riwayat")
+   # with c[4]:
+   #     render(f'<div style="text-align:right">{status_chip()}</div>')
+ #   with c[5]:
+    #    if is_authenticated():
+    #        if st.button("Keluar", key="topbar_logout"):
+    #            logout()
+    #    else:
+     #       st.page_link(PAGE_LOGIN, label="Masuk")
 
 
 # ----------------------------------------------------------------------------
