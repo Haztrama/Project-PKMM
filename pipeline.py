@@ -17,14 +17,11 @@ from knowledge import QUESTION_DB, TOPIC_KEYWORDS
 from utils import ASR_MODELS, OLLAMA_MODEL, OLLAMA_TIMEOUT, OLLAMA_URL, TARGET_SR
 
 # --- KONFIGURASI SISTEM ---
-# Memastikan library FFmpeg tersedia (sama seperti versi sebelumnya)
 try:
-    ffmpeg_src = imageio_ffmpeg.get_ffmpeg_exe()
-    ffmpeg_dst = os.path.join(os.getcwd(), "ffmpeg.exe")
-    if not os.path.exists(ffmpeg_dst):
-        shutil.copy(ffmpeg_src, ffmpeg_dst)
+    FFMPEG_PATH = imageio_ffmpeg.get_ffmpeg_exe()
 except Exception:
-    pass
+    # Fallback jika terjadi kendala, arahkan ke string default sistem
+    FFMPEG_PATH = "ffmpeg"
 
 
 @st.cache_resource(show_spinner=False)
