@@ -17,10 +17,17 @@ from knowledge import QUESTION_DB, TOPIC_KEYWORDS
 from utils import ASR_MODELS, OLLAMA_MODEL, OLLAMA_TIMEOUT, OLLAMA_URL, TARGET_SR
 
 # --- KONFIGURASI SISTEM ---
+def get_ffmpeg_path():
+    """Mengambil path FFmpeg yang kompatibel dengan Windows, Linux (Streamlit Cloud), & macOS."""
+    try:
+        return imageio_ffmpeg.get_ffmpeg_exe()
+    except Exception:
+        return "ffmpeg"
+
+
 def extract_audio_from_video(input_video_path, output_audio_path):
     try:
-        # Ambil path FFmpeg secara otomatis yang kompatibel dengan Linux / Windows
-        ffmpeg_path = imageio_ffmpeg.get_ffmpeg_exe()
+        ffmpeg_path = get_ffmpeg_path()
         
         # Jalankan perintah ekstraksi audio menggunakan subprocess
         command = [
@@ -50,12 +57,12 @@ def load_stt(language: str = "Inggris"):
 # --- FUNGSI UTILITAS ---
 def convert_video_to_audio(video_path, audio_path):
     """
-    Ekstraksi audio dari video menggunakan subprocess FFmpeg.
+    Ekstraksi audio dari video menggunakan subprocess FFmpeg (Cross-platform aman untuk Linux/Windows).
     """
     try:
-        ffmpeg_cmd = "ffmpeg.exe" if os.path.exists("ffmpeg.exe") else "ffmpeg"
+        ffmpeg_path = get_ffmpeg_path()
         command = [
-            ffmpeg_cmd, "-i", video_path, "-vn",
+            ffmpeg_path, "-i", video_path, "-vn",
             "-acodec", "pcm_s16le", "-ar", "16000", "-ac", "1",
             audio_path, "-y"
         ]
@@ -68,7 +75,8 @@ def convert_video_to_audio(video_path, audio_path):
 
         subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, startupinfo=startupinfo)
         return True
-    except Exception:
+    except Exception as e:
+        print(f"Error convert_video_to_audio: {e}")
         return False
 
 
