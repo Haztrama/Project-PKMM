@@ -18,10 +18,10 @@ from utils import ASR_MODELS, OLLAMA_MODEL, OLLAMA_TIMEOUT, OLLAMA_URL, TARGET_S
 
 # --- KONFIGURASI SISTEM ---
 try:
-    FFMPEG_PATH = imageio_ffmpeg.get_ffmpeg_exe()
+    ffmpeg_path = imageio_ffmpeg.get_ffmpeg_exe()
 except Exception:
     # Fallback jika terjadi kendala, arahkan ke string default sistem
-    FFMPEG_PATH = "ffmpeg"
+    ffmpeg_path = "ffmpeg"
 
 
 @st.cache_resource(show_spinner=False)
